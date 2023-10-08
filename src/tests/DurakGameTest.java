@@ -42,4 +42,19 @@ public class DurakGameTest {
         assertEquals(6, playerSecondHand.size()); // Проверяем, что второй игрок получил 6 карт.
     }
 
+      @Test
+    void testAttack() {
+        int input = 1;
+        
+        List<Card> playerFirstHand = new ArrayList<>();
+        playerFirstHand.add(new Card("6", "Пики"));
+        List<Card> playerSecondHand = new ArrayList<>();
+        List<Card> table = new ArrayList<>();
+
+        game.attack(playerFirstHand, playerSecondHand, table, input);
+
+        assertTrue(table.size() == 1 || table.isEmpty()); 
+
+    }
+
 }
