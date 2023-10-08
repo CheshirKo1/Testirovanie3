@@ -72,5 +72,32 @@ public class DurakGameSteps {
         assertTrue(table.isEmpty());
     }
 //M
+@When("the game ends")
+    public void endGame() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        game.endGame(playerFirstHand, playerSecondHand);
+
+        String expectedOutput = "\nПобедил первый игрок!\n";
+        assertEquals(expectedOutput, outputStream.toString());
+
+        System.setOut(System.out);
+    }
+//f
+    @Then("the first player should win")
+    public void the_first_player_should_win() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        game.endGame(playerFirstHand, playerSecondHand);
+
+        String expectedOutput = "\nПобедил первый игрок!\n";
+        assertEquals(expectedOutput, outputStream.toString());
+
+        System.setOut(System.out);
+    }
 
 }
+
+

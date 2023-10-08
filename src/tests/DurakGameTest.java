@@ -70,4 +70,19 @@ public class DurakGameTest {
         assertTrue(table.isEmpty());
     }
 
+    @Test
+    void testEndGame() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        DurakGame game = new DurakGame();
+        List<Card> playerFirstHand = new ArrayList<>();
+        List<Card> playerSecondHand = Arrays.asList(new Card("6", "Пики"));
+        game.endGame(playerFirstHand, playerSecondHand);
+
+        String expectedOutput = "\nПобедил первый игрок!\n";
+        assertEquals(expectedOutput, outputStream.toString());
+
+        System.setOut(System.out);
+    }
 }

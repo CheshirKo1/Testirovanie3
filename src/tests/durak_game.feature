@@ -23,3 +23,10 @@ Feature: Durak Game
     And there is a card on the table
     When the second player defends against the attack
     Then the table should be empty
+
+  Scenario: Ending the game
+    Given the game is initialized
+    And the first player has no cards
+    And the second player has cards
+    When the game ends
+    Then the first player should win    

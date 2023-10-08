@@ -112,4 +112,11 @@ public class DurakGame {
 
         
     }
+    public static void endGame(List<Card> playerFirstHand, List<Card> playerSecondHand) {
+        if(playerFirstHand.isEmpty()) {
+            System.out.print("\nПобедил первый игрок!\n");
+        } else if (playerSecondHand.isEmpty()) {
+            System.out.print("\nПобедил второй игрок!\n");
+        }
+    }
 }
