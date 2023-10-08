@@ -34,4 +34,16 @@ public class DurakGame {
             playerSecondHand.add(desk.remove(desk.size() - 1));
         }
     }
+
+     public static void attack(List<Card> playerFirstHand, List<Card> playerSecondHand, List<Card> table, int cardIndex) {
+        
+
+        if (cardIndex >= 1 && cardIndex < playerFirstHand.size() + 1) {
+            Card card = playerFirstHand.remove(cardIndex - 1);
+            System.out.println("Вы атакуете картой: " + card);
+            table.add(card);
+        } else {
+            System.out.println("Недопустимый номер карты. Попробуйте еще раз.");
+        }
+    }
 }
