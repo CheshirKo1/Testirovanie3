@@ -46,4 +46,70 @@ public class DurakGame {
             System.out.println("Недопустимый номер карты. Попробуйте еще раз.");
         }
     }
+
+     public static void defend(List<Card> playerFirstHand, List<Card> playerSecondHand, List<Card> table, Card trumpCard, int cardIndex) {
+        Card attackingCard = table.get(table.size() - 1);
+        
+        if (cardIndex >= 1 && cardIndex < playerSecondHand.size() + 1) {
+
+            Card card = playerSecondHand.get(cardIndex - 1);
+            int valueRankCard;
+            int valueAttackingRankCard;
+
+            if(card.getRank().equals("Валет"))
+                valueRankCard = 11;
+            else if (card.getRank().equals("Дама"))
+                valueRankCard = 12;
+            else if (card.getRank().equals("Король"))
+                valueRankCard = 13;
+            else if (card.getRank().equals("Туз"))
+                valueRankCard = 14;
+            else
+                valueRankCard = Integer.valueOf(card.getRank());
+
+
+            if(attackingCard.getRank().equals("Валет"))
+                valueAttackingRankCard = 11;
+            else if (attackingCard.getRank().equals("Дама"))
+                valueAttackingRankCard = 12;
+            else if (attackingCard.getRank().equals("Король"))
+                valueAttackingRankCard = 13;
+            else if (attackingCard.getRank().equals("Туз"))
+                valueAttackingRankCard = 14;
+            else
+                valueAttackingRankCard = Integer.valueOf(attackingCard.getRank());
+
+            if(attackingCard.getSuit().equals(trumpCard.getSuit()) && !(card.getSuit().equals(trumpCard.getSuit()))) {
+                System.out.println("Второй игрок не может отбиться и берет карты со стола.");
+                playerSecondHand.addAll(table);
+                table.clear();
+                return;
+            }
+
+             if( !(attackingCard.getSuit().equals(trumpCard.getSuit())) && card.getSuit().equals(trumpCard.getSuit())) {
+                System.out.println("Второй игрок отбивается картой: " + card.toString());
+                playerFirstHand.addAll(table);
+                table.clear();
+                return;
+            }
+
+                
+            if (valueRankCard > valueAttackingRankCard) {
+                System.out.println("Второй игрок отбивается картой: " + card.toString());
+                
+                playerFirstHand.addAll(table);
+                table.clear();
+                return;
+            }
+
+            System.out.println("Второй игрок не может отбиться и берет карты со стола.");
+            playerSecondHand.addAll(table);
+            table.clear();
+
+        } else {
+            System.out.println("Недопустимый номер карты. Попробуйте еще раз.");
+        }
+
+        
+    }
 }
