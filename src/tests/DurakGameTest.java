@@ -58,6 +58,19 @@ public class DurakGameTest {
     }
 
     @Test
+    void testDefend() { 
+        int input = 1;
+
+        List<Card> playerFirstHand = new ArrayList<>(Arrays.asList(new Card("6", "Пики")));
+        List<Card> playerSecondHand = new ArrayList<>(Arrays.asList(new Card("7", "Пики")));
+        List<Card> table = new ArrayList<>(Arrays.asList(new Card("8", "Пики")));
+    
+        game.defend(playerFirstHand, playerSecondHand, table, new Card("9", "Пики"), input);
+    
+        assertTrue(table.isEmpty());
+    }
+
+    @Test
     void testEndGame() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
