@@ -16,6 +16,14 @@ Feature: Durak Game
     When the first player attacks with a card
     Then the card should be on the table
 
+  Scenario: Defending against an attack
+    Given the game is initialized
+    And the first player has a card
+    And the second player has a higher card
+    And there is a card on the table
+    When the second player defends against the attack
+    Then the table should be empty
+
   Scenario: Ending the game
     Given the game is initialized
     And the first player has no cards
