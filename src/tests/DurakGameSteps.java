@@ -34,7 +34,7 @@ public class DurakGameSteps {
     public void checkDeckSize(int size) {
         assertEquals(size, this.deck.size());
     }
-
+//A
     @Given("the first player has a card")
     public void addCardToFirstPlayerHand() {
         playerFirstHand.add(new Card("6", "Пики"));
@@ -50,5 +50,27 @@ public class DurakGameSteps {
     public void checkCardOnTable() {
         assertTrue(table.size() == 1 || table.isEmpty());
     }
+//D
+     @Given("the second player has a higher card")
+    public void addHigherCardToSecondPlayerHand() {
+        playerSecondHand.add(new Card("7", "Пики"));
+    }
+
+    @Given("there is a card on the table")
+    public void addCardToTable() {
+        table.add(new Card("8", "Пики"));
+    }
+
+    @When("the second player defends against the attack")
+    public void defendAgainstAttack() {
+        int input = 1;
+        game.defend(playerFirstHand, playerSecondHand, table, new Card("9", "Пики"), input);
+    }
+
+    @Then("the table should be empty")
+    public void checkEmptyTable() {
+        assertTrue(table.isEmpty());
+    }
+//M
 
 }
