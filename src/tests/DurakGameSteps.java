@@ -84,7 +84,7 @@ public class DurakGameSteps {
 
         System.setOut(System.out);
     }
-
+//f
     @Then("the first player should win")
     public void the_first_player_should_win() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
